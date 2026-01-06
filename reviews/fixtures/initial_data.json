@@ -1,0 +1,60 @@
+[
+    {
+        "_comment": "Start of DrinkType",
+        "model": "reviews.DrinkType",
+        "pk": 1,
+        "fields": {
+            "type": "Carbonated"
+        }
+    },
+    {
+        "model": "reviews.DrinkType",
+        "pk": 2,
+        "fields": {
+            "type": "Non-carbonated"
+        }
+    },
+    {
+        "model": "reviews.DrinkType",
+        "pk": 3,
+        "fields": {
+            "type": "Powdered"
+        }
+    },
+    {
+        "_comment": "Start of DrinkContainer",
+        "model": "reviews.DrinkContainer",
+        "pk": 1,
+        "fields": {
+            "type": "Aluminum can"
+        }
+    },
+    {
+        "model": "reviews.DrinkContainer",
+        "pk": 2,
+        "fields": {
+            "type": "Plastic bottle"
+        }
+    },
+    {
+        "model": "reviews.DrinkContainer",
+        "pk": 3,
+        "fields": {
+            "type": "Glass bottle"
+        }
+    },
+    {
+        "model": "reviews.DrinkContainer",
+        "pk": 4,
+        "fields": {
+            "type": "Energy shot (~50ml)"
+        }
+    },
+    {
+        "model": "reviews.DrinkContainer",
+        "pk": 5,
+        "fields": {
+            "type": "Micro shot (~5-25ml)"
+        }
+    }
+]

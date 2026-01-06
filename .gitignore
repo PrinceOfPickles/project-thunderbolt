@@ -107,7 +107,7 @@ env.bak/
 venv.bak/ 
 
 # mkdocs documentation 
-/site 
+/project-thunderbolt
 
 # mypy 
 .mypy_cache/ 
@@ -136,3 +136,12 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# VSCODIUM ADDED
+project_thunderbolt/__init__.py
+project_thunderbolt/asgi.py
+.gitignore
+project_thunderbolt/urls.py
+.gitignore
+project_thunderbolt/wsgi.py
+project_thunderbolt/settings.py

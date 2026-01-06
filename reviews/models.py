@@ -36,4 +36,4 @@ class EnergyDrink(models.Model):
         return f"{self.brand} {self.series} {self.name}"
 
 class Review(models.Model):
-    drink = 
+    pass
