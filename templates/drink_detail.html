@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ drink.brand }} {{ drink.series }} {{ drink.name }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">{{ drink.brand }} {{ drink.series }} {{ drink.name }}</h1>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Details</h5>
+                <p class="card-text">
+                    <strong>Type:</strong> {{ drink.drink_type.type }}<br>
+                    <strong>Container:</strong> {{ drink.container.type }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

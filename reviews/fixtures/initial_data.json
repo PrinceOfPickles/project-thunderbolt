@@ -1,60 +1,197 @@
 [
-    {
-        "_comment": "Start of DrinkType",
-        "model": "reviews.DrinkType",
-        "pk": 1,
-        "fields": {
-            "type": "Carbonated"
-        }
-    },
-    {
-        "model": "reviews.DrinkType",
-        "pk": 2,
-        "fields": {
-            "type": "Non-carbonated"
-        }
-    },
-    {
-        "model": "reviews.DrinkType",
-        "pk": 3,
-        "fields": {
-            "type": "Powdered"
-        }
-    },
-    {
-        "_comment": "Start of DrinkContainer",
-        "model": "reviews.DrinkContainer",
-        "pk": 1,
-        "fields": {
-            "type": "Aluminum can"
-        }
-    },
-    {
-        "model": "reviews.DrinkContainer",
-        "pk": 2,
-        "fields": {
-            "type": "Plastic bottle"
-        }
-    },
-    {
-        "model": "reviews.DrinkContainer",
-        "pk": 3,
-        "fields": {
-            "type": "Glass bottle"
-        }
-    },
-    {
-        "model": "reviews.DrinkContainer",
-        "pk": 4,
-        "fields": {
-            "type": "Energy shot (~50ml)"
-        }
-    },
-    {
-        "model": "reviews.DrinkContainer",
-        "pk": 5,
-        "fields": {
-            "type": "Micro shot (~5-25ml)"
-        }
+  {
+    "model": "users.User",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$XqJ5l5l5l5l5l5l5$XqJ5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-01-01T00:00:00Z"
     }
+  },
+  {
+    "model": "users.User",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$260000$XqJ5l5l5l5l5l5l5$XqJ5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user1",
+      "first_name": "",
+      "last_name": "",
+      "email": "user1@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.DrinkType",
+    "pk": 1,
+    "fields": {
+      "type": "carbonated"
+    }
+  },
+  {
+    "model": "reviews.DrinkType",
+    "pk": 2,
+    "fields": {
+      "type": "non-carbonated"
+    }
+  },
+  {
+    "model": "reviews.DrinkType",
+    "pk": 3,
+    "fields": {
+      "type": "powdered"
+    }
+  },
+  {
+    "model": "reviews.DrinkContainer",
+    "pk": 1,
+    "fields": {
+      "type": "aluminum can"
+    }
+  },
+  {
+    "model": "reviews.DrinkContainer",
+    "pk": 2,
+    "fields": {
+      "type": "plastic bottle"
+    }
+  },
+  {
+    "model": "reviews.DrinkContainer",
+    "pk": 3,
+    "fields": {
+      "type": "glass bottle"
+    }
+  },
+  {
+    "model": "reviews.DrinkContainer",
+    "pk": 4,
+    "fields": {
+      "type": "energy shot (~30-50ml)"
+    }
+  },
+  {
+    "model": "reviews.DrinkContainer",
+    "pk": 5,
+    "fields": {
+      "type": "micro shot (~5-25ml)"
+    }
+  },
+  {
+    "model": "reviews.EnergyDrink",
+    "pk": 1,
+    "fields": {
+      "brand": "Monster",
+      "series": "",
+      "name": "Original",
+      "taste_profile": "The original Monster Energy drink.",
+      "image": "",
+      "description": "",
+      "drink_type": 1,
+      "drink_container": 1
+    }
+  },
+  {
+    "model": "reviews.EnergyDrink",
+    "pk": 2,
+    "fields": {
+      "brand": "Red Bull",
+      "series": "",
+      "name": "Original",
+      "taste_profile": "The classic Red Bull energy drink.",
+      "image": "",
+      "description": "",
+      "drink_type": 1,
+      "drink_container": 1
+    }
+  },
+  {
+    "model": "reviews.EnergyDrink",
+    "pk": 3,
+    "fields": {
+      "brand": "Bang",
+      "series": "Energy",
+      "name": "Rainbow Unicorn",
+      "taste_profile": "Bang Energy with a fun, fruity flavor.",
+      "image": "",
+      "description": "",
+      "drink_type": 1,
+      "drink_container": 1
+    }
+  },
+  {
+    "model": "reviews.Review",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "drink": 1,
+      "review_text": "This drink is great for a quick energy boost!",
+      "sweetness_rating": 8.0,
+      "sourness_rating": 3.0,
+      "flavor_strength_rating": 7.0,
+      "overall_rating": 8.5,
+      "created_dt": "2024-01-01T00:00:00Z",
+      "updated_dt": "2024-01-01T00:00:00Z",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "reviews.Review",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "drink": 2,
+      "review_text": "Classic taste, but a bit too sweet for me.",
+      "sweetness_rating": 9.0,
+      "sourness_rating": 2.0,
+      "flavor_strength_rating": 6.0,
+      "overall_rating": 7.5,
+      "created_dt": "2024-01-01T00:00:00Z",
+      "updated_dt": "2024-01-01T00:00:00Z",
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "tierlists.TierList",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "title": "My Favorite Energy Drinks",
+      "description": "A tier list of my favorite energy drinks.",
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z",
+      "tier_structure": {"S-Tier": [], "A-Tier": [], "B-Tier": []},
+      "is_hidden": false
+    }
+  },
+  {
+    "model": "tierlists.TierListItem",
+    "pk": 1,
+    "fields": {
+      "tier_list": 1,
+      "drink": 1,
+      "tier": "S-Tier",
+      "position": 1
+    }
+  },
+  {
+    "model": "tierlists.TierListItem",
+    "pk": 2,
+    "fields": {
+      "tier_list": 1,
+      "drink": 2,
+      "tier": "A-Tier",
+      "position": 1
+    }
+  }
 ]

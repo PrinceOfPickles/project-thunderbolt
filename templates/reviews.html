@@ -1,0 +1,32 @@
+<!-- templates/reviews.html -->
+{% extends 'base.html' %}
+
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">Reviews</h1>
+        <p class="lead">Read reviews of energy drinks.</p>
+    </div>
+</div>
+<div class="row mt-4">
+    {% for review in reviews %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ review.drink.brand }} {{ review.drink.series }} {{ review.drink.name }}</h5>
+                <p class="card-text">
+                    <strong>Review by:</strong> {{ review.user.username }}<br>
+                    <strong>Sweetness:</strong> {{ review.sweetness_rating }}/10<br>
+                    <strong>Sourness:</strong> {{ review.sourness_rating }}/10<br>
+                    <strong>Flavor Strength:</strong> {{ review.flavor_strength_rating }}/10<br>
+                    <strong>Overall Rating:</strong> {{ review.overall_rating }}/10<br>
+                    <strong>Review:</strong> {{ review.review_text }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!-- tierlists/templates/tierlists/tierlist_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ tierlist.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">{{ tierlist.title }}</h1>
+        <p class="lead">Created by: {{ tierlist.user.username }}</p>
+        <p>{{ tierlist.description }}</p>
+    </div>
+</div>
+<div class="row mt-4">
+    {% for tier, items in tierlist.tier_structure.items %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ tier }}</h5>
+            </div>
+            <div class="card-body">
+                {% for item in items %}
+                <div class="mb-2">
+                    <strong>{{ item.drink.name }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

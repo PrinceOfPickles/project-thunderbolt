@@ -1,0 +1,42 @@
+<!-- templates/index.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">Welcome to Energy Drink Reviews!</h1>
+        <p class="lead">Discover and review your favorite energy drinks.</p>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Browse Drinks</h5>
+                <p class="card-text">Check out our collection of energy drinks.</p>
+                <a href="{% url 'drinks' %}" class="btn btn-primary">Browse</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Read Reviews</h5>
+                <p class="card-text">See what others are saying about their favorite drinks.</p>
+                <a href="{% url 'reviews' %}" class="btn btn-primary">Read Reviews</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Create Tier Lists</h5>
+                <p class="card-text">Rank your favorite energy drinks in custom tier lists.</p>
+                <a href="{% url 'tierlists' %}" class="btn btn-primary">Create Tier List</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

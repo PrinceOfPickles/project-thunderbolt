@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Energy Drinks{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">Energy Drinks</h1>
+        <p class="lead">Browse our collection of energy drinks.</p>
+    </div>
+</div>
+<div class="row mt-4">
+    {% for drink in drinks %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ drink.brand }} {{ drink.series }} {{ drink.name }}</h5>
+                <p class="card-text">
+                    <strong>Type:</strong> {{ drink.drink_type.type }}<br>
+                    <strong>Container:</strong> {{ drink.container.type }}
+                </p>
+                <a href="{% url 'drink_detail' drink.id %}" class="btn btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
