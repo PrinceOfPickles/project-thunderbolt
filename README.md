@@ -2,7 +2,7 @@
 ## Django framework website for energy drink reviews, tier lists
 
 Features to add:
-- [ ] Reviews for each energy drink
+- [x] Reviews for each energy drink
 - [ ] Tier lists can be made and saved by a user
     - [ ] Energy drinks are selected from a list
     - [ ] Energy drinks are shown via an image or text and are dragged with a cursor on the tier list 

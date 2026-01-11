@@ -12,6 +12,7 @@
     <div class="col-md-4 mb-4">
         <div class="card h-100">
             <div class="row g-0">
+                <!-- Left side: Drink info -->
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ drink.brand }} {{ drink.name }}</h5>
@@ -21,22 +22,23 @@
                             <strong>Taste Profile:</strong> {{ drink.taste_profile|default:"Not specified" }}<br>
                             <strong>Average Rating:</strong>
                             {% if drink.avg_rating %}
-                                {{ drink.avg_rating|floatformat:1 }}/10
+                                {{ drink.avg_rating|floatformat:2 }}/10
                             {% else %}
-                                No reviews yet
+                                N/A
                             {% endif %}
                         </p>
                     </div>
                 </div>
-
+                <!-- Right side: Drink image -->
                 <div class="col-md-4 d-flex align-items-center justify-content-center p-2">
                     {% if drink.image %}
                     <img src="{{ drink.image.url }}" class="img-fluid rounded" style="max-height: 150px; object-fit: contain;" alt="{{ drink.name }}">
                     {% endif %}
                 </div>
             </div>
-            <div class="card-footer bg-transparent">
-                <a href="{% url 'drink_reviews' drink.id %}" class="btn btn-primary">More Details</a>
+            <!-- More Details button -->
+            <div class="card-footer bg-transparent text-end">
+                <a href="{% url 'drink_detail' drink.id %}" class="btn btn-primary mx-3">More</a>
             </div>
         </div>
     </div>

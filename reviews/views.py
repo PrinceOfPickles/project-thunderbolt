@@ -15,11 +15,13 @@ def drinks(request):
 
 def drink_detail(request, drink_id):
     drink = get_object_or_404(EnergyDrink, id=drink_id)
-    return render(request, 'drink_detail.html', {'drink': drink})
+    reviews = Review.objects.filter(drink=drink, is_hidden=False).order_by('-created_dt')
+    avg_rating = reviews.aggregate(Avg('overall_rating'))['overall_rating__avg']
+    return render(request, 'drink_detail.html', {'drink': drink, 'reviews': reviews, 'avg_rating': avg_rating})
 
 def drink_reviews(request, drink_id):
     drink = get_object_or_404(EnergyDrink, id=drink_id)
-    reviews = Review.objects.filter(drink=drink, is_hidden=False).order_by('-created_dt')
+    
     return render(request, 'drink_reviews.html', {'drink': drink, 'reviews': reviews})
 
 def reviews(request):
