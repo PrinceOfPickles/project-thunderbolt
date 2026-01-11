@@ -10,8 +10,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
     path('', reviews_views.index, name='index'),
+    
     path('drinks/', reviews_views.drinks, name='drinks'),
     path('drinks/<int:drink_id>/', reviews_views.drink_detail, name='drink_detail'),
     path('drinks/<int:drink_id>/reviews/', reviews_views.drink_reviews, name='drink_reviews'),
@@ -26,6 +26,12 @@ urlpatterns = [
     path('logout/', users_views.user_logout, name='logout'),
     path('enable-otp/', users_views.enable_otp, name='enable_otp'),
     path('verify-otp/', users_views.verify_otp, name='verify_otp'),
+    path('drinks/<int:drink_id>/review/', reviews_views.create_review, name='create_review'),
+    path('reviews/<int:review_id>/edit/', reviews_views.edit_review, name='edit_review'),
+    path('reviews/<int:review_id>/delete/', reviews_views.delete_review, name='delete_review'),
+    path('create/', tierlists_views.create_tierlist, name='create_tierlist'),
+    path('<int:tierlist_id>/edit/', tierlists_views.edit_tierlist, name='edit_tierlist'),
+    path('<int:tierlist_id>/delete/', tierlists_views.delete_tierlist, name='delete_tierlist'),
 ]
 
 if settings.DEBUG:

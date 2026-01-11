@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Delete Review{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title text-center">Delete Review</h2>
+                <p>Are you sure you want to delete your review for {{ review.drink.name }}?</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100">Delete Review</button>
+                </form>
+                <a href="{% url 'drink_detail' review.drink.id %}" class="btn btn-secondary w-100 mt-2">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

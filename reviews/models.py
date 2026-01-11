@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, MaxValueValidator
-from django.utils import timezone
 
 User = get_user_model()
 
@@ -41,20 +40,20 @@ class EnergyDrink(models.Model):
         return f"{self.brand} {self.series} {self.name}"
 
 class Review(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    drink = models.ForeignKey('EnergyDrink', on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    drink = models.ForeignKey('EnergyDrink', on_delete=models.CASCADE)
     review_text = models.TextField(blank=True, null=True)
     sweetness_rating = models.FloatField(
-        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)], null=True, blank=True
+        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)]
     )
     sourness_rating = models.FloatField(
-        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)], null=True, blank=True
+        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)]
     )
     flavor_strength_rating = models.FloatField(
-        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)], null=True, blank=True
+        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)]
     )
     overall_rating = models.FloatField(
-        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)], null=True, blank=True
+        validators=[MinValueValidator(1.0), MaxValueValidator(10.0)]
     )
     created_dt = models.DateTimeField(auto_now_add=True)
     updated_dt = models.DateTimeField(auto_now=True)

@@ -1,13 +1,13 @@
-<!-- tierlists/templates/tierlists/tierlists.html -->
 {% extends 'base.html' %}
-
 {% block title %}Tier Lists{% endblock %}
-
 {% block content %}
 <div class="row">
     <div class="col-md-12">
         <h1 class="display-4">Tier Lists</h1>
         <p class="lead">Browse tier lists created by users.</p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'create_tierlist' %}" class="btn btn-success mb-3">Create Tier List</a>
+        {% endif %}
     </div>
 </div>
 <div class="row mt-4">
