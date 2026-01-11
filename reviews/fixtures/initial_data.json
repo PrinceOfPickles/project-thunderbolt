@@ -35,56 +35,56 @@
     "model": "reviews.DrinkType",
     "pk": 1,
     "fields": {
-      "type": "carbonated"
+      "type": "Carbonated"
     }
   },
   {
     "model": "reviews.DrinkType",
     "pk": 2,
     "fields": {
-      "type": "non-carbonated"
+      "type": "Non-carbonated"
     }
   },
   {
     "model": "reviews.DrinkType",
     "pk": 3,
     "fields": {
-      "type": "powdered"
+      "type": "Powdered"
     }
   },
   {
     "model": "reviews.DrinkContainer",
     "pk": 1,
     "fields": {
-      "type": "aluminum can"
+      "type": "Aluminum can"
     }
   },
   {
     "model": "reviews.DrinkContainer",
     "pk": 2,
     "fields": {
-      "type": "plastic bottle"
+      "type": "Plastic bottle"
     }
   },
   {
     "model": "reviews.DrinkContainer",
     "pk": 3,
     "fields": {
-      "type": "glass bottle"
+      "type": "Glass bottle"
     }
   },
   {
     "model": "reviews.DrinkContainer",
     "pk": 4,
     "fields": {
-      "type": "energy shot (~30-50ml)"
+      "type": "Energy shot (~30-50ml)"
     }
   },
   {
     "model": "reviews.DrinkContainer",
     "pk": 5,
     "fields": {
-      "type": "micro shot (~5-25ml)"
+      "type": "Micro shot (~5-25ml)"
     }
   },
   {
@@ -95,7 +95,7 @@
       "series": "",
       "name": "Original",
       "taste_profile": "The original Monster Energy drink.",
-      "image": "",
+      "image": "1.png",
       "description": "",
       "drink_type": 1,
       "drink_container": 1
@@ -109,7 +109,7 @@
       "series": "",
       "name": "Original",
       "taste_profile": "The classic Red Bull energy drink.",
-      "image": "",
+      "image": "2.png",
       "description": "",
       "drink_type": 1,
       "drink_container": 1

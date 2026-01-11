@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}{{ drink.brand }} {{ drink.name }} Reviews{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="display-4">{{ drink.brand }} {{ drink.name }} Reviews</h1>
+        <p class="lead">All reviews for this energy drink.</p>
+    </div>
+</div>
+<div class="row mt-4">
+    {% for review in reviews %}
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Review by {{ review.user.username }}</h5>
+                <p class="card-text">
+                    <strong>Sweetness:</strong> {{ review.sweetness_rating }}/10<br>
+                    <strong>Sourness:</strong> {{ review.sourness_rating }}/10<br>
+                    <strong>Flavor Strength:</strong> {{ review.flavor_strength_rating }}/10<br>
+                    <strong>Overall Rating:</strong> {{ review.overall_rating }}/10<br>
+                    <strong>Review:</strong> {{ review.review_text }}
+                </p>
+                <p class="card-text"><small class="text-muted">Reviewed on: {{ review.created_dt|date:"F d, Y" }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-md-12">
+        <p>No reviews yet for this drink.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -7,3 +7,9 @@ body {
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.card img {
+    max-height: 150px;
+    object-fit: contain;
+    padding: 10px;
+}

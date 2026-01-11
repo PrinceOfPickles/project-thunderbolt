@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
-{% block title %}Energy Drinks{% endblock %}
-
+{% block title %}Drinks{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col-md-12">
@@ -13,13 +11,32 @@
     {% for drink in drinks %}
     <div class="col-md-4 mb-4">
         <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">{{ drink.brand }} {{ drink.series }} {{ drink.name }}</h5>
-                <p class="card-text">
-                    <strong>Type:</strong> {{ drink.drink_type.type }}<br>
-                    <strong>Container:</strong> {{ drink.container.type }}
-                </p>
-                <a href="{% url 'drink_detail' drink.id %}" class="btn btn-primary">View Details</a>
+            <div class="row g-0">
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ drink.brand }} {{ drink.name }}</h5>
+                        <p class="card-text">
+                            <strong>Type:</strong> {{ drink.drink_type.type }}<br>
+                            <strong>Container:</strong> {{ drink.drink_container.type }}<br>
+                            <strong>Taste Profile:</strong> {{ drink.taste_profile|default:"Not specified" }}<br>
+                            <strong>Average Rating:</strong>
+                            {% if drink.avg_rating %}
+                                {{ drink.avg_rating|floatformat:1 }}/10
+                            {% else %}
+                                No reviews yet
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-flex align-items-center justify-content-center p-2">
+                    {% if drink.image %}
+                    <img src="{{ drink.image.url }}" class="img-fluid rounded" style="max-height: 150px; object-fit: contain;" alt="{{ drink.name }}">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{% url 'drink_reviews' drink.id %}" class="btn btn-primary">More Details</a>
             </div>
         </div>
     </div>

@@ -22,20 +22,20 @@ class EnergyDrink(models.Model):
     series = models.CharField(max_length=50, blank=True)
     name = models.CharField(max_length=50, blank=True)
     drink_type = models.ForeignKey(
-        DrinkType,
+        'DrinkType',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
     drink_container = models.ForeignKey(
-        DrinkContainer,
+        'DrinkContainer',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
     description = models.TextField(blank=True)
     taste_profile = models.TextField(blank=True)
-    image = models.ImageField(upload_to='energy_drinks/')
+    image = models.ImageField(upload_to='energy_drinks/', blank=True, null=True)
 
     def __str__(self):
         return f"{self.brand} {self.series} {self.name}"
