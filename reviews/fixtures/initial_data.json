@@ -1,22 +1,22 @@
 [
   {
-    "model": "users.User",
+    "model": "auth.User",
     "pk": 1,
     "fields": {
       "password": "pbkdf2_sha256$260000$XqJ5l5l5l5l5l5l5$XqJ5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l",
       "last_login": null,
-      "is_superuser": true,
+      "is_superuser": false,
       "username": "admin",
       "first_name": "",
       "last_name": "",
       "email": "admin@example.com",
-      "is_staff": true,
+      "is_staff": false,
       "is_active": true,
       "date_joined": "2024-01-01T00:00:00Z"
     }
   },
   {
-    "model": "users.User",
+    "model": "auth.User",
     "pk": 2,
     "fields": {
       "password": "pbkdf2_sha256$260000$XqJ5l5l5l5l5l5l5$XqJ5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l5l",

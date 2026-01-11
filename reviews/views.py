@@ -3,6 +3,15 @@ from django.db import models
 from django.db.models import Avg
 from django.views.generic import ListView
 from .models import Review, EnergyDrink
+from django.contrib.auth.decorators import login_required
+
+class ReviewListView(ListView):
+    model = Review
+    template_name = 'reviews/review_list.html'
+    context_object_name = 'reviews'
+
+    def get_queryset(self):
+        return Review.objects.filter(is_hidden=False)
 
 def index(request):
     return render(request, 'index.html')
@@ -28,11 +37,11 @@ def reviews(request):
     reviews = Review.objects.filter(is_hidden=False)
     return render(request, 'reviews.html', {'reviews': reviews})
 
-class ReviewListView(ListView):
-    model = Review
-    template_name = 'reviews/review_list.html'
-    context_object_name = 'reviews'
 
-    def get_queryset(self):
-        return Review.objects.filter(is_hidden=False)
+@login_required
+def create_review(request, drink_id):
+    pass
 
+
+def faq(request):
+    return render(request, 'faq.html')

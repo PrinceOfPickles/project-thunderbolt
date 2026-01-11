@@ -6,9 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}project-thunderbolt{% endblock %}</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Your custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -34,17 +32,17 @@
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Profile</a>
+                            <a class="nav-link" href="#">Welcome, {{ user.username }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Log Out</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Login</a>
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'index' %}">Sign Up</a>
+                            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -70,7 +68,7 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">FAQ</a></li>
+                        <li><a href="{% url 'faq' %}" class="text-white">FAQ</a></li>
                         <li><a href="https://github.com/PrinceOfPickles/project-thunderbolt" class="text-white">Project repo</a></li>
                     </ul>
                 </div>
