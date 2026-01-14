@@ -1,8 +1,8 @@
-0. Clone the repository `git clone https://github.com/PrinceOfPickles/project-thunderbolt`
-1. Open terminal to the project root (/project-thunderbolt)
-2. Start venv by running `python3 -m venv venv` and `source venv/bin/activate` (activate.fish or activate.zsh according to your shell)
-3. Get required Python libraries `pip install -r requirements.txt`
-4. Add starting data with `python manage.py loaddata reviews/fixtures/initial_data.json`
-5. (optional, I think) Remake migrations just in case `python manage.py makemigrations` `python manage.py migrate`
-6. Add super user with `python manage.py createsuperuser`
-7. Start server with `python manage.py runserver`
+1. Clone the repository `git clone https://github.com/PrinceOfPickles/project-thunderbolt`
+2. Open terminal to the project root (/project-thunderbolt)
+3. Start venv by running `python3 -m venv venv` and `source venv/bin/activate` (activate.fish or activate.zsh according to your shell)
+4. Get required Python libraries `pip install -r requirements.txt`
+5. Remake migrations just in case `python manage.py makemigrations` and add them `python manage.py migrate`
+6. Add starting data with `python manage.py loaddata reviews/fixtures/initial_data.json`
+7. (optional) Add super user with `python manage.py createsuperuser`
+8. Start server with `python manage.py runserver`
