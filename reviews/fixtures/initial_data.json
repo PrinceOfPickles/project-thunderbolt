@@ -162,20 +162,31 @@
     }
   },
   {
-    "model": "tierlists.TierList",
+    "model": "tierlists.tierlist",
     "pk": 1,
     "fields": {
-      "user": 2,
-      "title": "My Favorite Energy Drinks",
-      "description": "A tier list of my favorite energy drinks.",
-      "created_at": "2024-01-01T00:00:00Z",
-      "updated_at": "2024-01-01T00:00:00Z",
-      "tier_structure": {"S-Tier": [], "A-Tier": [], "B-Tier": []},
-      "is_hidden": false
+      "user": 1,
+      "title": "Best Energy Drinks",
+      "description": "A tier list of the best energy drinks available.",
+      "is_hidden": false,
+      "created_at": "2026-01-12T12:00:00Z",
+      "updated_at": "2026-01-12T12:00:00Z"
     }
   },
   {
-    "model": "tierlists.TierListItem",
+    "model": "tierlists.tierlist",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "title": "Budget Energy Drinks",
+      "description": "A tier list of budget-friendly energy drinks.",
+      "is_hidden": false,
+      "created_at": "2026-01-12T12:00:00Z",
+      "updated_at": "2026-01-12T12:00:00Z"
+    }
+  },
+  {
+    "model": "tierlists.tierlistitem",
     "pk": 1,
     "fields": {
       "tier_list": 1,
@@ -185,12 +196,22 @@
     }
   },
   {
-    "model": "tierlists.TierListItem",
+    "model": "tierlists.tierlistitem",
     "pk": 2,
     "fields": {
       "tier_list": 1,
       "drink": 2,
       "tier": "A-Tier",
+      "position": 1
+    }
+  },
+  {
+    "model": "tierlists.tierlistitem",
+    "pk": 3,
+    "fields": {
+      "tier_list": 2,
+      "drink": 3,
+      "tier": "B-Tier",
       "position": 1
     }
   }

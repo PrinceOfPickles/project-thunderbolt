@@ -1,0 +1,90 @@
+<!-- tierlists/templates/tierlists/add_drinks_to_tierlist.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Drinks to {{ tierlist.title }}{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-4">Add Drinks to {{ tierlist.title }}</h1>
+            <p class="lead">Search for a drink and select a tier to add it to your tier list.</p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="drink_search" class="form-label">Search Drink</label>
+                            <input type="text" class="form-control" id="drink_search" placeholder="Search by name, brand, or series">
+                            <div id="drink_results" class="list-group mt-2" style="display: none;"></div>
+                            <input type="hidden" id="drink_id" name="drink_id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tier" class="form-label">Select Tier</label>
+                            <select class="form-select" id="tier" name="tier" required>
+                                <option selected disabled>Select a tier</option>
+                                <option value="S-Tier">S-Tier</option>
+                                <option value="A-Tier">A-Tier</option>
+                                <option value="B-Tier">B-Tier</option>
+                                <option value="C-Tier">C-Tier</option>
+                                <option value="D-Tier">D-Tier</option>
+                                <option value="F-Tier">F-Tier</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Drink</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a href="{% url 'tierlist_detail' tierlist.id %}" class="btn btn-secondary">View Tier List</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#drink_search').on('input', function() {
+        const query = $(this).val();
+        if (query.length > 2) {
+            $.get(`/tierlists/search-drinks/?q=${query}`, function(data) {
+                const resultsDiv = $('#drink_results');
+                resultsDiv.empty();
+                if (data.length > 0) {
+                    data.forEach(function(drink) {
+                        resultsDiv.append(`
+                            <a href="#" class="list-group-item list-group-item-action" data-id="${drink.id}">
+                                ${drink.brand} ${drink.name}
+                            </a>
+                        `);
+                    });
+                    resultsDiv.show();
+                } else {
+                    resultsDiv.hide();
+                }
+            }).fail(function() {
+                alert('Error fetching search results.');
+            });
+        } else {
+            $('#drink_results').hide();
+        }
+    });
+
+    $(document).on('click', '#drink_results a', function(e) {
+        e.preventDefault();
+        const drinkId = $(this).data('id');
+        const drinkName = $(this).text();
+        $('#drink_id').val(drinkId);
+        $('#drink_search').val(drinkName);
+        $('#drink_results').hide();
+    });
+});
+</script>
+{% endblock %}

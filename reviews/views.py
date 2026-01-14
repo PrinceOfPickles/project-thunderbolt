@@ -1,18 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import models
 from django.db.models import Avg
-from django.views.generic import ListView
 from .models import Review, EnergyDrink
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import ReviewForm
 
-# class ReviewListView(ListView):
-#     model = Review
-#     template_name = 'reviews/review_list.html'
-#     context_object_name = 'reviews'
-
-#     def get_queryset(self):
-#         return Review.objects.filter(is_hidden=False)
 
 def index(request):
     return render(request, 'index.html')
@@ -49,7 +41,7 @@ def create_review(request, drink_id):
             review.user = request.user
             review.drink = drink
             review.save()
-            return redirect('drinks/drink_detail', drink_id=drink.id)
+            return redirect('drink_detail', drink_id=drink.id)
     else:
         form = ReviewForm()
     return render(request, 'reviews/create_review.html', {'form': form, 'drink': drink})
@@ -58,12 +50,12 @@ def create_review(request, drink_id):
 def edit_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     if request.user != review.user:
-        return redirect('drinks/drink_detail', drink_id=review.drink.id)
+        return redirect('drink_detail', drink_id=review.drink.id)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            return redirect('drinks/drink_detail', drink_id=review.drink.id)
+            return redirect('drink_detail', drink_id=review.drink.id)
     else:
         form = ReviewForm(instance=review)
     return render(request, 'reviews/edit_review.html', {'form': form, 'review': review})
@@ -72,10 +64,10 @@ def edit_review(request, review_id):
 def delete_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     if request.user != review.user:
-        return redirect('drinks/drink_detail', drink_id=review.drink.id)
+        return redirect('drink_detail', drink_id=review.drink.id)
     if request.method == 'POST':
         review.delete()
-        return redirect('drinks/drink_detail', drink_id=review.drink.id)
+        return redirect('drink_detail', drink_id=review.drink.id)
     return render(request, 'reviews/delete_review.html', {'review': review})
 
 def faq(request):

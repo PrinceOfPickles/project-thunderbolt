@@ -27,3 +27,54 @@ footer a:hover {
     color: #ffffff;
     text-decoration: none;
 }
+
+.tier-row {
+    border: 2px dashed #ccc;
+    min-height: 180px;
+}
+
+.tier-row.drag-over {
+    background-color: #f0f0f0;
+}
+
+.tier-item {
+    cursor: move;
+    transition: transform 0.2s;
+    display: inline-block;
+    text-align: center;
+    width: 120px;
+}
+
+.tier-item-label {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.tier-item.dragging {
+    opacity: 0.5;
+}
+
+.tier-item img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.tier-item img:hover {
+    transform: scale(1.05);
+}
+
+.no-image-box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    padding: 5px;
+    height: 150px;
+    width: 100px;
+}
+
+

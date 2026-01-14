@@ -11,14 +11,27 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', reviews_views.index, name='index'),
-    
+    path('faq/', reviews_views.faq, name='faq'),
+
     path('drinks/', reviews_views.drinks, name='drinks'),
     path('drinks/<int:drink_id>/', reviews_views.drink_detail, name='drink_detail'),
     path('drinks/<int:drink_id>/reviews/', reviews_views.drink_reviews, name='drink_reviews'),
+    path('drinks/<int:drink_id>/review/', reviews_views.create_review, name='create_review'),
+
     path('reviews/', reviews_views.reviews, name='reviews'),
-    path('faq/', reviews_views.faq, name='faq'),
-    path('tierlists/', tierlists_views.TierList, name='tierlists'),
+    path('reviews/<int:review_id>/edit/', reviews_views.edit_review, name='edit_review'),
+    path('reviews/<int:review_id>/delete/', reviews_views.delete_review, name='delete_review'),
+
+    path('tierlists/', tierlists_views.tierlists, name='tierlists'),
     path('tierlists/<int:tierlist_id>/', tierlists_views.tierlist_detail, name='tierlist_detail'),
+    path('tierlists/<int:tierlist_id>/edit/', tierlists_views.edit_tierlist, name='edit_tierlist'),
+    path('tierlists/<int:tierlist_id>/delete/', tierlists_views.delete_tierlist, name='delete_tierlist'),
+    path('tierlists/create/', tierlists_views.create_tierlist, name='create_tierlist'),
+    path('tierlists/update-tier/<int:item_id>/', tierlists_views.update_tier, name='update_tier'),
+    path('tierlists/<int:tierlist_id>/add-drinks/', tierlists_views.add_drinks_to_tierlist, name='add_drinks_to_tierlist'),
+    path('tierlists/search-drinks/', tierlists_views.search_drinks, name='search_drinks'),
+    path('tierlists/save-order/<int:tierlist_id>/', tierlists_views.save_order, name='save_order'),
+
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', users_views.signup, name='signup'),
     path('signup/', users_views.signup, name='signup'),
@@ -26,12 +39,8 @@ urlpatterns = [
     path('logout/', users_views.user_logout, name='logout'),
     path('enable-otp/', users_views.enable_otp, name='enable_otp'),
     path('verify-otp/', users_views.verify_otp, name='verify_otp'),
-    path('drinks/<int:drink_id>/review/', reviews_views.create_review, name='create_review'),
-    path('reviews/<int:review_id>/edit/', reviews_views.edit_review, name='edit_review'),
-    path('reviews/<int:review_id>/delete/', reviews_views.delete_review, name='delete_review'),
-    path('create/', tierlists_views.create_tierlist, name='create_tierlist'),
-    path('<int:tierlist_id>/edit/', tierlists_views.edit_tierlist, name='edit_tierlist'),
-    path('<int:tierlist_id>/delete/', tierlists_views.delete_tierlist, name='delete_tierlist'),
+    
+    
 ]
 
 if settings.DEBUG:

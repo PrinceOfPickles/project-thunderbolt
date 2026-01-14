@@ -1,37 +1,57 @@
 {% extends 'base.html' %}
-
-{% block title %}{{ tierlist.title }}{% endblock %}
+{% load static %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-12">
-        <h1 class="display-4">{{ tierlist.title }}</h1>
-        <p class="lead">Created by: {{ tierlist.user.username }}</p>
-        <p>{{ tierlist.description }}</p>
-        {% if user.is_authenticated and user == tierlist.user %}
-        <div class="d-flex justify-content-end mb-3">
-            <a href="{% url 'edit_tierlist' tierlist.id %}" class="btn btn-primary me-2">Edit</a>
-            <a href="{% url 'delete_tierlist' tierlist.id %}" class="btn btn-danger">Delete</a>
-        </div>
-        {% endif %}
-    </div>
-</div>
-<div class="row mt-4">
-    {% for tier, items in tierlist.tier_structure.items %}
-    <div class="col-md-4 mb-4">
-        <div class="card">
-            <div class="card-header">
-                <h5>{{ tier }}</h5>
+<div id="tierlist-container" 
+     class="container mt-4" 
+     data-tierlist-id="{{ tierlist.id }}" 
+     data-is-owner="{{ isOwner|lower }}">
+    
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="display-4">{{ tierlist.title }}</h1>
+            <p class="lead">Created by: {{ tierlist.user.username }}</p>
+            {% if isOwner %}
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{% url 'edit_tierlist' tierlist.id %}" class="btn btn-primary me-2">Edit</a>
+                <a href="{% url 'delete_tierlist' tierlist.id %}" class="btn btn-danger">Delete</a>
             </div>
-            <div class="card-body">
-                {% for item in items %}
-                <div class="mb-2">
-                    <strong>{{ item.drink.name }}</strong>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            {% if isOwner %}
+            <button id="saveOrder" class="btn btn-success mb-3">Save Order</button>
+            {% endif %}
+
+            {% for tier_group in tier_data %}
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h4>{{ tier_group.name }}</h4>
+                        <div class="tier-row bg-light p-3 rounded" style="min-height: 100px;" data-tier="{{ tier_group.name }}">
+                            {% for item in tier_group.items %}
+                            <div class="tier-item d-inline-block me-2 mb-2" 
+                                 data-id="{{ item.id }}" 
+                                 style="cursor: grab;">
+                                {% if item.drink.image %}
+                                    <img src="{{ item.drink.image.url }}" class="img-thumbnail" style="width: 100px; height: 150px; object-fit: contain;" alt="{{ item.drink.name }}">
+                                {% else %}
+                                    <div class="no-image-box d-flex align-items-center justify-content-center bg-secondary text-white" style="width: 100px; height: 150px;">
+                                        <span class="text-center">{{ item.drink.name|truncatechars:15 }}</span>
+                                    </div>
+                                {% endif %}
+                                <p class="text-center tier-item-label mb-0">{{ item.drink.name }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
